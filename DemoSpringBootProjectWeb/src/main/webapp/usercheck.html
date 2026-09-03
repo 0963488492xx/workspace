@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>usercheck</title>
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+    <script>
+        $(function () {
+            $('#send').click(function () {
+                var username = $('#userAccount').val();
+                console.log('username:' + username);
+
+                if (username.trim() == '') {
+                    alert('Account is empty');
+                    return;
+                }
+
+                var params = { "username": '' + username };
+
+                $.ajax({
+                    type: 'post',
+                    url: 'accountcheck.controller',
+                    contentType: 'application/json',
+                    data: JSON.stringify(params),
+                    success: function (data) {
+                        console.log('data:' + data);
+                        if (data == 'Y') {
+                            $('#result').html('Account Exists');
+                        }
+
+                        if (data == 'N') {
+                            $('#result').html('Account Not Exists');
+                        }
+                    }
+                })
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <td>Account:<input id="userAccount" type="text" name="userAccount" /></td>
+            <td id="result"></td>
+        </tr>
+    </table>
+    <button id="send">Send</button>
+</body>
+
+</html>

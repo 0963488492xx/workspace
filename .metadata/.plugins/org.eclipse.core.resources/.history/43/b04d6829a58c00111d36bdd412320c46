@@ -1,0 +1,26 @@
+package com.example.demo.controller;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.model.House;
+
+@RestController
+public class HouseController {
+
+	@GetMapping("/jsonarrycreation.controller")
+	public List<House> processAction(){
+		
+		House hBean1 = new House(1002, "War House");
+		House hBean2 = new House(1003, "Tricky House");
+
+		ArrayList<House> lists = new ArrayList<House>();
+		lists.add(hBean1);
+		lists.add(hBean2);
+	
+		return lists;
+	}
+}

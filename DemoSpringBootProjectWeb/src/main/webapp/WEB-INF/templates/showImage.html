@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ShowImage</title>
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+    <script>
+        $(function () {
+            $.ajax({
+                type: 'get',
+                url: 'retrieveimage.controller',
+                dataType: 'json',
+                success: function (data) {
+                    console.log(data);
+                    $('#myImage').attr('src', data.base64);
+                    $('#base64Info').val(data.base64);
+                }
+            });
+        });
+
+    </script>
+</head>
+
+<body>
+    <img id="myImage" alt="no info" style="max-width: 300px;"><br />
+    <textarea id="base64Info" rows="10" cols="50" readonly></textarea>
+</body>
+
+</html>

@@ -1,0 +1,5 @@
+spring.application.name=DemoSpringBootProjectWeb
+
+
+#Tomcat Server Port Setting
+server.port=8081

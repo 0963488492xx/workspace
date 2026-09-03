@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>form</title>
+</head>
+
+<body>
+    <h3>Form</h3>
+    <form action="check.controller" method="post">
+        <table>
+            <tr>
+                <td>Name:</td>
+                <td><input type="text" name="userName" /></td>
+                <td th:if="${erros!=null and erros.name!=null}" th:text="${erros.name}"></td>
+            </tr>
+            <tr>
+                <td><button type="submit">Send</button></td>
+            </tr>
+        </table>
+    </form>
+</body>
+
+</html>

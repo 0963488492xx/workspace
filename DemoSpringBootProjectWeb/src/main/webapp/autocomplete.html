@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Autocomplete</title>
+    <link rel="stylesheet" href="mycss/autocom.css">
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+    <script>
+        $(function () {
+            $('#search').keyup(function () {
+                $.ajax({
+                    type: 'post',
+                    url: 'animalreader2.controller',
+                    data: 'keyword=' + $(this).val(),
+                    success: function (data) {
+                        console.log(data);
+                        var resultText = '';
+                        $.each(data, function (i, n) {
+                            resultText += '<div id="aname" onclick="list(' + "'" + n.aname + "'" + ')">'
+                                + n.aname + '</div>';
+                        });
+
+                        console.log('resultText:' + resultText);
+
+                        $('#info-lists').show();
+                        $('#info-lists').html(resultText);
+                    }
+                });
+            });
+        });
+
+        function list(value) {
+            $('#search').val(value);
+            $('#info-lists').hide();
+        }
+    </script>
+</head>
+
+<body>
+    <div class="basis">
+        Animal Name:<br />
+        <input type="text" id="search" placeholder="Please Input Animal Name" /><br />
+        <div id="info-lists"></div>
+    </div>
+</body>
+
+</html>

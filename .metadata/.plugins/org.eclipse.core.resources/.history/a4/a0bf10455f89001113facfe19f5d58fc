@@ -1,0 +1,37 @@
+package com.example.demo.controller;
+
+
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseCookie;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+@Controller
+public class HttpCookiesController {
+
+	@GetMapping("/setcookies.controller")
+	public ResponseEntity<String> processSetResponseCookiesAction(){
+		ResponseCookie cookie = ResponseCookie.from("myCookies","chocolate")
+											.httpOnly(true)
+											.path("/")
+											.maxAge(24*60*60*30)
+											.sameSite("Lax")
+											.build();
+		return ResponseEntity.ok()
+							.header(HttpHeaders.SET_COOKIE, cookie.toString())
+							.body("Set Cookies OK");
+	}
+	
+	@GetMapping("/retrievecookie")
+	@ResponseBody
+	public String processRetrieveCookieAction(@CookieValue(defaultValue = "empty", required = true) String mycookie){
+		return "myCookie:" + mycookie;
+	}
+	
+	
+	
+	
+}

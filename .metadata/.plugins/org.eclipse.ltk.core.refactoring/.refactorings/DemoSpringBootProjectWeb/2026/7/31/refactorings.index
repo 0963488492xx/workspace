@@ -1,0 +1,16 @@
+1785116385620	Extract local variable 'cookie'
+1785136685255	Rename resource 'logingSystem.html'
+1785205189678	Extract local variable 'pp'
+1785218352105	Extract local variable 'lci'
+1785220000025	Extract local variable 'errMsg'
+1785221034676	Delete element
+1785224957465	Delete element
+1785225799958	Extract local variable 'op'
+1785225829763	Extract local variable 'p1'
+1785225931382	Extract local variable 'base64'
+1785379215947	Move 'XML' to 'resources'
+1785379222507	Rename resource 'XML'
+1785379918965	Copy file
+1785391662808	Extract local variable 'op'
+1785394878786	Extract local variable 'updateBean'
+1785395317854	Extract local variable 'resulrBean'

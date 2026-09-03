@@ -1,0 +1,24 @@
+package com.example.demo.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+@Controller
+public class PathVariableController {
+
+	//http://localhost:8081/members/A001
+
+	@GetMapping("/members/{mid}")
+	@ResponseBody  //application/json
+	public String processAction(@PathVariable("mid") String memberId) {
+		return "MemberId:" + memberId;
+	}
+	//簡寫版本  (@PathVariable("mid") String memberId)可以變(@PathVariable String mid)
+	@GetMapping("/members2/{mid}")
+	@ResponseBody
+	public String processAction2(@PathVariable String mid) {
+		return "MemberId2:" +mid;
+	}
+}

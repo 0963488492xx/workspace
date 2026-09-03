@@ -1,0 +1,37 @@
+package com.example.demo.model;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.demo.util.PictureUtil;
+
+import jakarta.transaction.Transactional;
+
+@Service
+@Transactional
+public class PictureService {
+	
+	@Autowired
+	private PictureRepository pRepos;
+	
+	public Picture insert(Picture p) {
+		return pRepos.save(p);
+	}
+
+	public Picture findPictureById(Integer id) {
+		Optional<Picture> op = pRepos.findById(id);
+		
+		if (op.isPresent()) {
+			Picture p1 = op.get();
+			String base64 = "data:image/jpeg;base64,"+ PictureUtil.convertByteArrayToBase64(p1.getPicture());
+			p1.setBase64(base64);
+			return p1;
+		}
+		return null;
+	}
+	
+	
+	
+}

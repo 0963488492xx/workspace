@@ -1,0 +1,19 @@
+package tw.leonchen.model;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import jakarta.transaction.Transactional;
+
+@Service
+@Transactional
+public class PictureService {
+	
+	@Autowired
+	private PictureRepository pRepos;
+	
+	public Picture insert(Picture p) {
+		return pRepos.save(p);
+	}
+
+}

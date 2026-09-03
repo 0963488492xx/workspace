@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Promise01</title>
+    <script type="text/javascript">
+        window.onload = function () {
+            function showResult(msg) {
+                document.getElementById('result').innerHTML = msg;
+            }
+
+            var promise = new Promise(function (resolve, reject) {
+                var x = 0;
+                if (x == 0) {
+                    resolve('OK');
+                } else {
+                    reject('Systam Error');
+                }
+            })
+
+            promise.then(
+                function (value) {
+                    showResult(value);
+                },
+                function (error) {
+                    showResult(error);
+                }
+            );
+        };
+
+
+
+
+    </script>
+</head>
+
+<body>
+    Promise01
+    <div id="result"></div>
+</body>
+
+</html>

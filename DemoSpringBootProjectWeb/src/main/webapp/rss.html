@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>rss</title>
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+    <script>
+        $(function () {
+            $('#receieve').click(function () {
+                $.ajax({
+                    type: 'get',
+                    url: 'rssreader.controller',
+                    dataType: 'xml',
+                    success: function (data) {
+                        console.log(data)
+
+                        $('#result').empty("");
+                        $('item', data).each(function (e) {
+                            xTitle = $('title', this).text();
+                            console.log('xTitle:' + xTitle);
+
+                            xLink = $('link', this).text();
+                            console.log('xLink:' + xLink);
+
+                            $('<a/>').attr('href', xLink).attr('target', '_blank').text(xTitle).appendTo($('#result'));
+                            //  $('<a/>').attr('href', xLink).attr('target', '_self').text(xTitle).appendTo($('#result'));
+                            $('<br/>').appendTo($('#result'));
+
+                        });
+
+                    }
+                })
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <button id="receieve">Receieve</button>
+    <div id="result"></div>
+</body>
+
+</html>

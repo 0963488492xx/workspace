@@ -1,0 +1,58 @@
+package com.example.demo.model;
+
+
+
+import java.util.List;
+
+import org.hibernate.Session;
+import org.hibernate.query.Query;
+import org.hibernate.sql.Update;
+import org.springframework.stereotype.Repository;
+
+import jakarta.persistence.PersistenceContext;
+import jakarta.transaction.Transactional;
+
+@Repository
+@Transactional
+public class HouseDao {
+
+	@PersistenceContext
+	private Session session;
+
+	public House selectById(Integer id) {
+		House resultBean= session.find(House.class, id);
+		return resultBean;
+	}
+	
+	public List<House> selectAll(){
+		Query<House> query = session.createQuery("from House", House.class);
+		return query.list();
+		
+	}
+	
+	public House insert(String houseName) {
+		House insertBean = new House(houseName);
+		session.persist(houseName);
+		return insertBean;
+	}
+	
+	public String update(Integer houseid,String houseName) {
+		House queryBean = session.find(House.class, houseid);
+		if (queryBean!=null) {
+			queryBean.setHousename(houseName);
+			session.merge(queryBean);
+			return "update success";
+		}
+			return "no result";
+		
+	}
+	
+	public boolean deleteById(Integer houseid) {
+		House deleteBean = session.find(House.class, houseid);
+		if (deleteBean!=null) {
+			session.remove(deleteBean);
+			return true;
+		}
+		return false;
+	}
+}

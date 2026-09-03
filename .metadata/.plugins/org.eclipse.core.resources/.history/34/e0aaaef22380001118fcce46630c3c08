@@ -1,0 +1,13 @@
+package com.example.demo.util;
+
+import org.aspectj.lang.JoinPoint;
+
+public class LogAdvice {
+
+	public void logBefore(JoinPoint p1) {
+		System.out.println("before at " + p1.getTarget().getClass()+" ");
+		System.out.println("calling" + p1.getSignature().getName()+" ");
+		System.out.println("use" + p1.getArgs()[0]+" ");
+		System.out.println("before: go into joinpoint method");
+	}
+}

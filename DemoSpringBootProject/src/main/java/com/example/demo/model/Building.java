@@ -1,0 +1,44 @@
+package com.example.demo.model;
+
+//javabean
+public class Building {
+
+	private Integer bid =1000;
+	private String bname = "taipei101";
+	private Integer age = 20;
+	public Building() {
+		
+	}
+	
+	public Building(String bname, Integer age) {
+		super();
+		this.bname = bname;
+		this.age = age;
+	}
+
+	public Building(Integer bid, String bname, Integer age) {
+		super();
+		this.bid = bid;
+		this.bname = bname;
+		this.age = age;
+	}
+	public Integer getBid() {
+		return bid;
+	}
+	public void setBid(Integer bid) {
+		this.bid = bid;
+	}
+	public String getBname() {
+		return bname;
+	}
+	public void setBname(String bname) {
+		this.bname = bname;
+	}
+	public Integer getAge() {
+		return age;
+	}
+	public void setAge(Integer age) {
+		this.age = age;
+	}
+
+}

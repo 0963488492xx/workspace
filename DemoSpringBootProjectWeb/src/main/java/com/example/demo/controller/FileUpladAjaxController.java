@@ -1,0 +1,56 @@
+package com.example.demo.controller;
+
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+
+
+
+@RestController
+public class FileUpladAjaxController {
+ 
+	@PostMapping("/uploadfile.controller")
+	public String processUploadFileAction(@RequestPart("myfile") MultipartFile mf) throws IllegalStateException, IOException {
+		String fileName = mf.getOriginalFilename();
+		System.out.println("fileName:" + fileName);
+		
+		String saveFileDir = "C:/temp/upload";
+		
+		Calendar c1 = Calendar.getInstance();
+		int year = c1.get(Calendar.YEAR);
+		int month = c1.get(Calendar.MONTH)+1;
+		int day = c1.get(Calendar.DAY_OF_MONTH);
+		int hour = c1.get(Calendar.HOUR);
+		int minute = c1.get(Calendar.MINUTE);
+		int second = c1.get(Calendar.SECOND);
+		long milliSec = c1.get(Calendar.MILLISECOND);
+		
+		
+		SimpleDateFormat df =  new SimpleDateFormat("yyyyMMddhhmmssSSS");
+		String myData =  df.format(new Date());
+		
+		
+		
+		
+		
+//		String mySaveFileName = "myfile_" + year + month + day + hour + minute + second + milliSec + ".jpg";
+		String mySaveFileName = "myfile_" + myData + ".jpg";
+		System.out.println("mySaveFileName:" + mySaveFileName);
+		
+		File saveFilePath = new File(saveFileDir, mySaveFileName);
+		mf.transferTo(saveFilePath);
+		
+		long nanoTime= System.nanoTime();
+		System.out.println("nanoTime:" + nanoTime);
+		
+		
+		return "saveFilePath:" + saveFilePath;
+	}
+}

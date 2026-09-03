@@ -1,0 +1,45 @@
+package com.example.demo.controller;
+
+import java.util.ArrayList;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.model.Building;
+
+@RestController
+public class JsonCreatorController {
+
+	
+	@GetMapping("/jsoncreator1.controller")
+	public Building processAction1() {
+		Building build1 = new Building(1000, "Taipei 101",21);
+		return build1;
+	}
+	
+	
+	@GetMapping("/jsoncreator2.controller")
+	public ArrayList<Building> processAction2(){
+		Building build1 = new Building(1001, "Burj Khalifa Tower", 15);
+		Building build2 = new Building(1002, "Shanghai Tower", 10);
+		
+		ArrayList<Building> buildings = new ArrayList<Building>();
+		buildings.add(build1);
+		buildings.add(build2);
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}

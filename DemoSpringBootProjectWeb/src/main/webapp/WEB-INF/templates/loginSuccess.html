@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>LoginSuccess</title>
+</head>
+
+<body>
+    Success, <span th:text="${user + '-' + pwd}"></span>
+    <div th:object="${loginCode}">
+        <span th:text="*{id}"></span>
+        <span th:text="*{username}"></span>
+        <span th:text="*{userpwd}"></span>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+package com.example.demo.product.model;
+
+
+import java.util.List;
+import java.util.Optional;
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+
+import jakarta.transaction.Transactional;
+
+@Service
+@Transactional
+public class ProductService {
+
+	@Autowired
+	private ProductRepository productRepos;
+	
+	public Product selectById(Integer id) {
+		Optional<Product> op = productRepos.findById(id);
+		
+		if (op.isPresent()) {
+			return op.get();
+		}
+		return null;
+	}
+	
+	
+	public List<Product> selectAll(){
+		return productRepos.findAll();
+	}
+	
+	public Page<Product> selectAllByPage(Pageable pageable){
+		return productRepos.findAll(pageable);
+	}
+	
+	
+	
+	
+}

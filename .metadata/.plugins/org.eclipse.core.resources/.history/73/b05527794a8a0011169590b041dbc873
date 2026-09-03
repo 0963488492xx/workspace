@@ -1,0 +1,28 @@
+package com.example.demo.config;
+
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.ResourceBundleMessageSource;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
+
+@Configuration
+public class WebAppConfig implements WebMvcConfigurer {
+
+	
+	public ResourceBundleMessageSource messageSource() {
+		ResourceBundleMessageSource ms = new ResourceBundleMessageSource();
+		ms.setBasename("i18n.message");
+		ms.setDefaultEncoding("UTF-8");
+		return ms;
+	}
+
+	@Override
+	public void addInterceptors(InterceptorRegistry registry) {
+		LocaleChangeInterceptor lci = new LocaleChangeInterceptor();
+		lci.setParamName("locale");
+		registry.addInterceptor(lci).addPathPatterns("/**");
+	}
+	
+	
+}

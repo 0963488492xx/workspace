@@ -1,0 +1,30 @@
+package com.example.demo.model;
+
+
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+@SpringBootTest
+class TreeBeanTest {
+
+	@Autowired
+	private TreeBean tree;
+	
+	@Test
+	void testGetName() {
+		String name = tree.getName();
+		System.out.println("name:" + name);
+}
+
+	@Test
+	void testGetAge() {
+		int age = tree.getAge();
+		System.out.println("age:" + age);
+	}
+	
+	@Test
+	void testTreeBean() {
+		System.out.println(tree.getName() + " " + tree.getAge());
+	}
+}

@@ -1,0 +1,28 @@
+package com.example.demo.model;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
+public class LoginService {
+
+//	@Autowired //constructor dependencyConstructor injection
+	private LoginDao loginDao;
+	
+	public LoginService() {
+		
+	}
+	@Autowired //constructor dependencyConstructor injection
+	public LoginService(LoginDao loginDao) {
+		this.loginDao = loginDao;
+	}
+	
+
+	public void setLoginDao(LoginDao loginDao) {
+		this.loginDao = loginDao;
+	}
+
+	public boolean checkLogin(String user, String pwd) {
+		return loginDao.checkLogin(user, pwd);
+	}
+}

@@ -1,0 +1,12 @@
+package com.example.demo.model;
+
+public class Building {
+
+	private Integer bid;
+	private String bname;
+	private Integer age;
+	public Building() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

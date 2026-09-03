@@ -1,0 +1,9 @@
+package com.example.demo.controller;
+
+public class ReadAnimalController {
+
+	public ReadAnimalController() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

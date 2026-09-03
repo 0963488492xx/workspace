@@ -1,0 +1,21 @@
+1783914808702	Copy compilation unit
+1783914812949	Move compilation unit
+1783914833000	Delete element
+1783926753610	Extract local variable 'result1'
+1783928934523	Extract local variable 'express1'
+1783929075723	Rename compilation unit 'DemoApelAction.java'
+1783930194783	Extract local variable 'ectx'
+1783996384701	Encapsulate field 'map, ...'
+1783997014846	Extract local variable 'tBean'
+1783997461505	Extract local variable 'truckBeanFactory'
+1783997567988	Extract local variable 'factory'
+1784009955822	Extract local variable 'p1'
+1784011492593	Extract local variable 'name'
+1784013597690	Extract local variable 'a1'
+1784080405498	Encapsulate field 'session, ...'
+1784084295933	Extract local variable 'resultBean'
+1784098668986	Extract local variable 'pageable'
+1784098685455	Extract local variable 'page'
+1784098710828	Extract local variable 'totalElements'
+1784098737800	Extract local variable 'totalPages'
+1784098754787	Extract local variable 'content'

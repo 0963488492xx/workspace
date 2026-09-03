@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>ProductList</title>
+    <link rel="stylesheet" href="/mycss/ordersystem.css">
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+    <script>
+        var indexPage = 1;
+        $(function () {
+            load(indexPage);
+        });
+
+        function change(page) {
+            indexPage = page;
+            load(indexPage);
+        }
+
+        function load(indexPage) {
+            $.ajax({
+                type: 'get',
+                url: '/product/querybypage/' + indexPage,
+                dataType: 'json',
+                contentType: 'application/json',
+                success: function (data) {
+                    console.log(data);
+
+                    $('#showproduct').empty('');
+                    $('#showpage').empty('');
+
+                    var totalPages = data.totalPages;
+                    var totalElements = data.totalElements;
+                    var content = data.content;
+
+                    console.log('totalPages:' + totalPages);
+                    console.log('totalElements:' + totalElements);
+                    console.log(content);
+
+                    if (data == null) {
+                        $('table').prepend('<tr><td colspan="2">No Result</td></tr>');
+                    } else {
+                        var table1 = $('#showproduct');
+                        table1.append('<tr id="ptitle"><th>ID</th><th>Product Name</th><th>Price</th>' +
+                            '<th>Quantity</th><th>Date</th><th>Note</th>' +
+                            '<tr>');
+                        $.each(content, function (i, n) {
+                            var tr = '<tr align="center"><td>' + n.pid + '</td>' +
+                                '<td>' + n.pname + '</td>' + '<td>' + n.price + '</td>' +
+                                '<td>' + n.quantity + '</td>' + '<td>' + n.pdate + '</td>' +
+                                '<td>' + n.note + '</td>' +
+                                '</tr>';
+                            table1.append(tr);
+                        });
+
+
+                        var table2 = $('#showpage');
+                        var tr1 = '<tr><td>Total Pages:' + data.totalPages + ' Total Records:' + totalElements + '</td>'
+                            + '<td colspan="3" align="right">Previous ';
+                        var td = '';
+                        for (var k = 1; k <= totalPages; k++) {
+                            td += '<button id="myPage" value="' + k + '" onclick="change(' + k + ')">' + k +
+                                '</button>&nbsp;';
+                        }
+
+                        var result = tr1 + td + 'Next</td></tr>';
+                        table2.append(result);
+                    }
+                }
+            });
+        }
+    </script>
+</head>
+
+<body>
+    <div id="productListTitle">Product Query</div>
+    <table id="showproduct" border="1"></table>
+    <table id="showpage"></table>
+</body>
+
+</html>

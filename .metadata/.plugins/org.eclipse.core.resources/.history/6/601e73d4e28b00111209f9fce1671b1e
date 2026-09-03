@@ -1,0 +1,33 @@
+package com.example.demo.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.example.demo.model.Profiles;
+import com.example.demo.model.ProfilesService;
+
+
+
+@Controller
+public class DemoCrudRestController {
+
+	@Autowired
+	private ProfilesService pService;
+	
+	@PostMapping("/profiles")
+	@ResponseBody
+	public String ProcessInsertAction(@RequestParam String userName, @RequestParam String userAddress, @RequestParam String userPhone) {
+		Profiles insertBean = new Profiles(userName,userAddress,userPhone);
+		pService.insert(insertBean);
+		return "Insert OK";
+	}
+	
+	@PostMapping("/profiles2")
+	@ResponseBody
+	public Profiles ProcessInsertAction2(@ResponseBody Profiles profiles) {
+		return pService.insert(profiles);
+	}
+}

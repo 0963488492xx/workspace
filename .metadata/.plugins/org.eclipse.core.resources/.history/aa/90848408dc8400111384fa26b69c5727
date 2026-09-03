@@ -1,0 +1,17 @@
+package com.example.demo.controller;
+
+import java.util.Map;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class DemoController {
+
+	
+	@GetMapping("/demo.controller")
+	public String processAction(@RequestParam String data1, @RequestParam String data2, @RequestParam Map<String, String> formData) {
+		return "data1:" + data1 + "data2:" + data2 + "formData:" + formData;
+				}
+}

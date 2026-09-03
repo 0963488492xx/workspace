@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>jquery01</title>
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $.get('jqueryaction1.controller', function (data) {
+                $('#result').html(data);
+            });
+        });
+    </script>
+</head>
+
+<body>
+    jquery01
+    <div id="result"></div>
+</body>
+
+</html>

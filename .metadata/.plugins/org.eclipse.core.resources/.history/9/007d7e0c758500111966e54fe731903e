@@ -1,0 +1,13 @@
+spring.application.name=DemoSpringBootProjectWeb
+
+
+#Tomcat Server Port Setting
+server.port=8081
+
+#information Setting
+name=mary
+age=18
+
+
+#static resources Setting
+spring.mvc.static-path-pattern=/WEB-INF/resources/

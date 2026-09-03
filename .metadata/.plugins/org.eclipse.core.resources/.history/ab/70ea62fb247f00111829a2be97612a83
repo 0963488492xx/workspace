@@ -1,0 +1,19 @@
+package com.example.demo.model;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class TruckBeanTest {
+
+	@Test
+	void testGetId() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testGetBrand() {
+		fail("Not yet implemented");
+	}
+
+}

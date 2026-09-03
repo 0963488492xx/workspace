@@ -1,0 +1,52 @@
+package com.example.demo.model;
+
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+
+import jakarta.transaction.Transactional;
+
+@Service
+@Transactional
+public class BirdService {
+	
+	@Autowired
+	private BirdRepository birdRepos;
+	
+	public Bird insert(Bird bird) {
+		return birdRepos.save(bird);
+	}
+	
+	public Bird update(Bird bird) {
+		return birdRepos.save(bird);
+	}
+	
+	public void deleteById(Integer id) {
+		birdRepos.deleteById(id);
+	}
+	
+	public Bird selectById(Integer id) {
+		Optional<Bird> op = birdRepos.findById(id);
+		
+		if(op.isPresent()) {
+			return op.get();
+		}
+		
+		return null;
+	}
+	
+	public List<Bird> selectAll() {
+		List<Bird> lists = birdRepos.findAll();
+		return lists;
+	}
+	
+	public Page<Bird> findAllByPage(Pageable pageable){
+		return birdRepos.findAll(pageable);
+	}
+
+}

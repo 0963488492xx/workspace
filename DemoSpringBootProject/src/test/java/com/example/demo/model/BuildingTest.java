@@ -1,0 +1,27 @@
+package com.example.demo.model;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.test.context.SpringBootTest;
+@SpringBootTest
+class BuildingTest {
+
+	@Autowired @Qualifier("building2")
+	private Building building;
+	@Test
+	void testGetBid() {
+		System.out.println("ID:"+ building.getBid());
+	}
+
+	@Test
+	void testGetBname() {
+		System.out.println("Name:"+ building.getBname());
+	}
+
+	@Test
+	void testGetAge() {
+		System.out.println("Age:"+ building.getAge());
+	}
+
+}

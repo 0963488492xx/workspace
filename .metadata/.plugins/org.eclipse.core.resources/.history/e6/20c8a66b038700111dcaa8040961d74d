@@ -1,0 +1,25 @@
+spring.application.name=DemoSpringBootProjectWeb
+
+
+#Tomcat Server Port Setting
+server.port=8081
+
+#information Setting
+name=mary
+age=18
+
+
+#static resources Setting
+spring.web.resources.static-locations=/WEB-INF/resources/,classpath:/static
+spring.mvc.static-path-pattern=/**
+
+#Context-Path Setting
+#server.servlet.context-path=/WonderLand
+
+
+#Thymeleaf Setting
+spring.thymeleaf.prefix=/WEB-INF-templates/
+spring.thymeleaf.suffix==.html
+spring.thymeleaf.encoding=UTF-8
+spring.thymeleaf.cache=false
+spring.thymeleaf.mode=HTML

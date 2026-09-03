@@ -1,0 +1,40 @@
+package com.example.demo.model;
+
+import java.awt.List;
+import java.util.Optional;
+
+import org.springframework.stereotype.Service;
+
+import jakarta.transaction.Transactional;
+
+@Service
+@Transactional
+public class BirdService {
+
+	private BirdRepository birdRepos;
+	
+	public Bird insert(Bird bird) {
+		return birdRepos.save(bird);
+	}
+	
+	public Bird update(Bird bird) {
+		return birdRepos.save(bird);
+	}
+	public void deleteById(Integer id) {
+		birdRepos.deleteById(id);
+		}
+	
+	public Bird selectById(Integer id) {
+		Optional<Bird> op = birdRepos.findById(id);
+		
+		if (op.isPresent()) {
+			return op.get();
+		}
+		return null;
+	}
+	
+	public List<Bird> selecrAll(){
+		List<Bird> lists = birdRepos.findAll();
+		return lists;
+	}
+}

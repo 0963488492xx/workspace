@@ -1,0 +1,29 @@
+package com.example.demo.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+
+
+@Controller
+public class HolaController {
+
+	
+	@GetMapping("/hola.controller")
+	public String processAction() {
+		return "hola";
+	}
+	
+	@GetMapping("/testpage01.action")
+	public String processAction2() {
+		return "TestThymeleafPage01";
+	}
+	
+	@GetMapping("/hola1.controller")
+	public String processAction1(Model m) {
+		m.addAttribute("name","mary");
+		m.addAttribute("age", 18);
+		return "hola";
+	}
+}

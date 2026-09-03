@@ -1,0 +1,40 @@
+package com.example.demo.controller;
+
+
+
+import java.util.HashMap;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+
+
+@Controller
+public class CheckController {
+
+	@GetMapping("/checkmain.controller")
+	public String processMainAction() {
+		return "form";
+	}
+	
+	@GetMapping("/check.controller")
+	public String processAction(@RequestParam String userName, Model m) {
+		HashMap<String, String> erros = new HashMap<String, String>();
+		m.addAttribute("erros",erros);
+		
+		if (userName==null || userName.length()==0) {
+			erros.put("name", "name is required");
+			
+		}
+		if (erros != null && !erros.isEmpty()) {
+			return "form";
+			
+		}
+		
+		m.addAttribute("userName", userName);
+		return "sucess";
+		
+	}
+}

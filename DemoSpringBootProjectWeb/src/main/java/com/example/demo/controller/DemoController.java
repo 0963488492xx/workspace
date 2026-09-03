@@ -1,0 +1,34 @@
+package com.example.demo.controller;
+
+import java.util.Collection;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class DemoController {
+
+	//(@RequestParam(required = false )找不到可以允許空值
+	@GetMapping("/demo.controller")
+	public String processAction(@RequestParam(required = false ) String data1, @RequestParam (required = false )String data2, @RequestParam Map<String, String> formData) {
+		Set<String> keys = formData.keySet();
+		Collection<String> values = formData.values();
+		Set<Entry<String, String>> mapping = formData.entrySet();
+		
+		String dataValue1 = formData.get("data1");
+		String dataValue2 = formData.get("data2");
+		
+		System.out.println("keys:" + keys);
+		System.out.println("values:" + values);
+		System.out.println("mapping:" + mapping);
+		
+		System.out.println("dataValue1:" + dataValue1);
+		System.out.println("dataValue2:" + dataValue2);
+		
+		return "data1:" + data1 + "data2:" + data2 + "formData:" + formData;
+				}
+}

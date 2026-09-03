@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>ajax03</title>
+    <script>
+        var xh = new XMLHttpRequest();
+
+        console.log('readyState1:' + xh.readyState);
+
+        xh.open('post', 'profiles.controller', true);
+
+        console.log('readyState2:' + xh.readyState);
+
+        xh.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        xh.send('userName=micky&userAddress=japan&userPhone=2145-8854-7799');
+
+        console.log('readyState3:' + xh.readyState);
+
+        xh.onload = function () {
+            console.log('readyState4:' + xh.readyState);
+            console.log('xh.status:' + xh.status);
+            console.log('xh.responseText:' + xh.responseText);
+        }
+
+        xh.onreadystatechange = function () {
+            console.log('readyState5:' + xh.readyState);
+        }
+
+        xh.onprogress = function () {
+            console.log('progressing...');
+        }
+
+
+        console.log('readyState6:' + xh.readyState);
+        console.log('finished');
+    </script>
+</head>
+
+<body>
+    ajax03
+</body>
+
+</html>

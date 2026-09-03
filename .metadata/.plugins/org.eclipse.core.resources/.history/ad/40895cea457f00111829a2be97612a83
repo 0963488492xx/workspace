@@ -1,0 +1,27 @@
+package com.example.demo.model;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.test.context.SpringBootTest;
+@SpringBootTest
+class TruckBeanFactoryTest {
+
+	@Autowired @Qualifier("fordTruck")
+	private TruckBean truck3;
+
+	@Autowired @Qualifier("subaruTruck")
+	private TruckBean truck4;
+	
+	
+	@Test
+	void testGetTruckBean() {
+		System.out.println("Id3:" + truck3.getId());
+		System.out.println("Brand3:" + truck3.getBrand());
+		
+		System.out.println("Id3:" + truck4.getId());
+		System.out.println("Brand3:" + truck4.getBrand());
+	}
+}

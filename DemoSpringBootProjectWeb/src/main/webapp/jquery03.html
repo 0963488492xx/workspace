@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>jquery03</title>
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+    <script>
+        $(function () {
+            $('#result1').load('jqueryaction1.controller');
+            $('#result2').load('jqueryaction1.controller', function () {
+                alert('mission complete !!');
+            });
+
+        });
+    </script>
+</head>
+
+<body>
+    jquery03
+    <div id="result1"></div>
+    <div id="result2"></div>
+</body>
+
+</html>

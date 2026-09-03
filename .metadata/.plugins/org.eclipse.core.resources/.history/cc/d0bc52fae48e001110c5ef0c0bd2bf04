@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>upload01</title>
+    <script>
+        function upload() {
+            // console.log('upload OK')
+            var form = document.getElementById('form1');
+            var formData = new FormData(form);
+
+            fetch('upload.controller', {
+                method: 'post',
+                body: formData
+            }).then(function (response) {
+                if (response.status != 200) {
+                    console.log('response.status1:' + response.status);
+                    return;
+                }
+                console.log('response.status2:' + response.status);
+            })
+        }
+    </script>
+</head>
+
+<body>
+    <h2>Information</h2>
+    <form id="form1">
+        <p>
+            Choose Your File to Upload: <br />
+            <input type="file" name="myfile" />
+        </p>
+        <button type="button" onclick="upload()">upload</button>
+
+
+
+
+    </form>
+</body>
+
+</html>

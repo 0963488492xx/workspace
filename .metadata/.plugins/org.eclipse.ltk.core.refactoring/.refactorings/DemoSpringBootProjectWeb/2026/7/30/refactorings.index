@@ -1,0 +1,16 @@
+1784616765045	Move compilation unit
+1784616776210	Delete element
+1784621502849	Extract local variable 'keys'
+1784621524547	Extract local variable 'values'
+1784621545629	Extract local variable 'mapping'
+1784621585330	Extract local variable 'dataValue1'
+1784684496232	Extract local variable 'mapping'
+1784684519190	Extract local variable 'keys'
+1784684532268	Extract local variable 'values'
+1784688218851	Delete element
+1784691892493	Delete element
+1784700563090	Extract local variable 'resource'
+1784705127888	Extract local variable 'building'
+1784707060365	Extract local variable 'size'
+1784857243290	Move 'TestThymeleafPage01.html' to 'templates'
+1784871304098	Extract local variable 'erros'

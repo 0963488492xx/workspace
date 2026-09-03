@@ -1,0 +1,14 @@
+package com.example.demo.model;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class BuildingDaoTest {
+
+	@Test
+	void testShowInfo() {
+		fail("Not yet implemented");
+	}
+
+}

@@ -1,0 +1,41 @@
+package com.example.demo.controller;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import ch.qos.logback.core.model.Model;
+
+@Controller
+public class LoginSystemController {
+
+	
+	@GetMapping("/loginsystemmain.controller")
+	public String processMainAction() {
+		return "loginSystem";
+	}
+	
+	@PostMapping("/checklogin.controller")
+	public String processAction(@RequestParam String userName, @RequestParam String userPwd,Model m) {
+		Map<String ,String> erros = new HashMap<String, String>(); 		
+		m.addAttribute("erros",erros);
+		
+		if (userName==null || userName.length()==0) {
+			erros.put("name", "name is required");
+		}
+		
+		if (userPwd==null || userPwd.length()==0) {
+			erros.put("pwd", "user password is required");
+		}
+		
+		if (erros!=null || !erros.isEmpty()) {
+			return "loginSystem";
+		}
+	}
+	
+}

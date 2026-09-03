@@ -1,0 +1,15 @@
+package com.example.demo.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+
+@Controller
+public class SessionAttributesController {
+
+	
+	public String processAction(Model m) {
+		m.addAttribute("player","poseidon");
+		m.addAttribute("level",100);
+		return "showSessionResult2";
+	}
+}

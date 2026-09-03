@@ -1,0 +1,20 @@
+package com.example.demo.model;
+
+public class BuildingService {
+
+	private BuildingDao bDao;
+	
+	public BuildingService(BuildingDao bDao) {
+		this.bDao = bDao;
+	}
+
+	private void showInfo() {
+		bDao.showInfo();
+	}
+	
+	
+	
+	
+	
+	
+}

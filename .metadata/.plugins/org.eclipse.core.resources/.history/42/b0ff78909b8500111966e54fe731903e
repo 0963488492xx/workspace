@@ -1,0 +1,15 @@
+package com.example.demo.controller;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+@RestController
+public class ResponseController {
+
+//	@GetMapping(path = "/response.controller", produces = "text/plain;charset=UTF-8")
+//	@GetMapping(path = "/response.controller", produces = "text/html;charset=UTF-8")
+	@GetMapping(path = "/response.controller", produces = "application/json;charset=UTF-8")
+	public String processAction() {
+		return "你好,How Are you?";
+	}
+	
+}

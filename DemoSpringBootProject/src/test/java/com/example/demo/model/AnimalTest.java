@@ -1,0 +1,23 @@
+package com.example.demo.model;
+
+
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+@SpringBootTest
+class AnimalTest {
+
+	@Autowired
+	private Animal animal1;
+	
+	@Autowired
+	private Animal animal2;
+	
+	@Test
+	void testGetId() {
+		System.out.println("animal1:" + animal1.hashCode());
+		System.out.println("animal2:" + animal2.hashCode());
+	}
+
+}

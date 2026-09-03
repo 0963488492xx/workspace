@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>jquery05</title>
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+    <script>
+        $(function () {
+            $('#send').click(function () {
+                $.ajax({
+                    type: 'get',
+                    url: 'jqueryaction1.controller',
+                    success: function (data) {
+                        $('#result').html(data);
+                    },
+                    complete: function () {
+                        $('#send').prop('disabled', true).text('Refresh')
+                    }
+                })
+            })
+        })
+
+
+    </script>
+</head>
+
+<body>
+    jquery05
+    <div id="result">
+        <h2>Show Me The Result</h2>
+    </div>
+    <button type="button" id="send">Send</button>
+</body>
+
+</html>

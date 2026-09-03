@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>ajax02</title>
+    <script>
+        var xh = new XMLHttpRequest();
+        xh.open('get', 'https://data.moenv.gov.tw/api/v2/aqx_p_432?api_key=b7df779e-71a6-4148-8379-5afbd441d803&limit=1000&sort=ImportDate desc&format=JSON', true);
+        xh.send();
+
+        xh.onload = function () {
+            console.log('xh.status' + xh.status)
+            console.log('xh.responseText:' + xh.responseText)
+        };
+
+        console.log('finish');
+    </script>
+</head>
+
+<body>
+    ajax02
+</body>
+
+</html>

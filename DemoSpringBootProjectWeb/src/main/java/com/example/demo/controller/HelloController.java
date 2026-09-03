@@ -1,0 +1,17 @@
+package com.example.demo.controller;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class HelloController {
+
+	//http://localhost:8080/hello.controller
+	@RequestMapping("/hello.controller")
+//	@RequestMapping(path = "/hello.controller", method = RequestMethod.GET)	
+//	@RequestMapping("/hello.controller")
+	public String processAction() {
+		return "hello,mary";
+		
+	}
+}

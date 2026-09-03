@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>hola</title>
+</head>
+
+<body>
+    hola, amigo !!<br />
+    <div th:text="${name}"></div>
+    Age:<input type="text" name="userAge" th:value="${age}" /><br />
+    <hr />
+    <div th:object="${motorcity}">
+        <div th:text="*{id}"></div>
+        <div th:text="*{name}"></div>
+    </div>
+    <hr />
+    <div th:each="name : ${lists}">
+        <span th:text="${name}"></span>
+    </div>
+    <hr />
+</body>
+
+</html>

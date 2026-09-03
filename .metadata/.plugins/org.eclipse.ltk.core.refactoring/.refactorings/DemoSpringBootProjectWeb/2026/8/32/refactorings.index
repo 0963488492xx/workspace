@@ -1,0 +1,8 @@
+1785723859058	Extract local variable 'day'
+1785723979956	Extract local variable 'hour'
+1785739577508	Extract local variable 'resultBean'
+1785824271854	Rename type 'ProductController'
+1785824430587	Delete element
+1785824479815	Rename package 'com.example.product.controller'
+1785824490631	Rename package 'com.example.product.model'
+1785826704983	Delete element

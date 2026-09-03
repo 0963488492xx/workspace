@@ -1,0 +1,46 @@
+package com.example.demo.model;
+
+public class House {
+
+	private Integer houseid;
+	
+	private String housename;
+	
+	
+	public House() {
+		
+	}
+
+
+	public House(Integer houseid, String housename) {
+		super();
+		this.houseid = houseid;
+		this.housename = housename;
+	}
+
+
+	public Integer getHouseid() {
+		return houseid;
+	}
+
+
+	public void setHouseid(Integer houseid) {
+		this.houseid = houseid;
+	}
+
+
+	public String getHousename() {
+		return housename;
+	}
+
+
+	public void setHousename(String housename) {
+		this.housename = housename;
+	}
+	
+	
+	
+	
+	
+	
+}

@@ -1,0 +1,14 @@
+package com.example.demo.controller;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class RequesHeaderController {
+	
+	@GetMapping("/singleheader.controller")
+	public String processAction1(@RequestHeader(name = "user-agent1" , required = true, defaultValue = "no info") String userAgent) {
+		return "UserAgent" + userAgent;
+	}
+}

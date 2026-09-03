@@ -1,0 +1,61 @@
+package com.example.demo.controller;
+
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.model.PersonalProfiles;
+import com.example.demo.model.PersonalProfilesService;
+
+@RestController
+public class PersonalProfilesController {
+
+	@Autowired
+	private PersonalProfilesService pService;
+	
+	@GetMapping("/ppinsert.controller")
+	public PersonalProfiles processInsertAction() {
+		PersonalProfiles pp = new PersonalProfiles("hank", "usa", "0012-3214-5412", 36, "PM", 75);
+		return pService.insert(pp);
+	}
+	
+	@GetMapping("/ppupdate.controller")
+	public PersonalProfiles processUpdateAction() {
+		PersonalProfiles pp = new PersonalProfiles(10006,"julia", "singapore", "003-2146-7745", 29, "sale", 12);
+		return pService.update(pp);
+	}
+	
+	@GetMapping("/ppdelete.controller")
+	public String processDaleteByIdAction() {
+		pService.deleteById(10006);
+		return "Delete OK";
+	}
+	
+	@GetMapping("/ppquerybyid.controller")
+	public PersonalProfiles processQueryByIdAction() {
+		return pService.getById(10000);
+	}
+	@GetMapping("/ppqueryall.controller")
+	public List<PersonalProfiles> processQueryAllAction(){
+		return pService.selectAll();
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}

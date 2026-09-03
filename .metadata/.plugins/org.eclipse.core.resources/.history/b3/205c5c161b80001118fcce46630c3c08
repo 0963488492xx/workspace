@@ -1,0 +1,64 @@
+package com.example.demo.model;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.Iterator;
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+@SpringBootTest
+class BirdServiceTest {
+
+	@Autowired
+	private BirdService birdService;
+	
+//	@Test
+	void testInsert() {
+		Bird insertBean = new Bird("BlueBird", "S", "Blue", 6);
+		Bird resultBean = birdService.insert(insertBean);
+		System.out.println(resultBean.getBid() + " " + resultBean.getBname() + " "+ resultBean.getSize() + " "
+				+ resultBean.getColor() + " " + resultBean.getAge());
+	}
+
+//	@Test
+	void testUpdate() {
+		Bird updateBean = new Bird(102,"SunnyBird", "M", "Yellow", 12);
+		Bird resultBean2 = birdService.update(updateBean);
+		System.out.println(resultBean2.getBid() + " " + resultBean2.getBname() + " "+ resultBean2.getSize() + " "
+				+ resultBean2.getColor() + " " + resultBean2.getAge());
+	}
+	
+
+	@Test
+	void testDeleteById() {
+		birdService.deleteById(104);
+		System.out.println("Delete OK");
+	}
+
+	//@Test
+	void testSelectById() {
+		Bird queryBean = birdService.selectById(100);
+		if (queryBean!=null) {
+			System.out.println(queryBean.getBid()+" "+queryBean.getBname()+" "+queryBean.getSize()+" "
+			+queryBean.getColor()+" "+queryBean.getAge());
+		}else {
+			System.out.println("no result");
+		}
+		
+	}
+
+	@Test
+	void testSelecrAll() {
+		List<Bird> lists = birdService.selectAll();
+		
+		Iterator<Bird> i1 = lists.iterator();
+		
+		while (i1.hasNext()) {
+			Bird bird = i1.next();
+			System.out.println(bird.getBid() + " " + bird.getBname());
+		}
+	}
+
+}

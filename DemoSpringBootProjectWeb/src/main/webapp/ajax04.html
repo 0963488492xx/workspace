@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>ajax04</title>
+    <script>
+        var xh = new XMLHttpRequest();
+        xh.open('get', 'xml/game.xml', true);
+        xh.send();
+
+        xh.onload = function () {
+            console.log('xh.responseXML:' + xh.responseXML);
+            console.log(xh.responseXML);
+
+            var tagGame = xh.responseXML.documentElement;
+            console.log(tagGame);
+
+            var roleTags = tagGame.children;
+            var roleTagsLen = roleTags.length;
+
+            console.log(roleTags);
+            console.log('roleTagsLen:' + roleTagsLen);
+
+            var resultText = '';
+            for (var i = 0; i < roleTagsLen; i++) {
+                var roleTag = roleTags[i];
+                console.log(roleTag);
+
+                var roleSubTags = roleTag.children;
+                var roleSubTagsLen = roleSubTags.length;
+
+                console.log(roleSubTags);
+                console.log('roleSubTagsLen:' + roleSubTagsLen);
+
+                for (let j = 0; j < roleSubTagsLen; j++) {
+                    var roleSubTagText = roleSubTags[j].textContent;
+                    resultText += roleSubTagText;
+                }
+
+                resultText += '<br/>';
+            }
+
+            console.log('resultText:' + resultText);
+
+            document.getElementById('result').innerHTML = resultText;
+            document.getElementById('result1').innerText = resultText;
+        };
+
+    </script>
+</head>
+
+<body>
+    ajax04 <br />
+    <div id="result"></div>
+    <div id="result1"></div>
+</body>
+
+</html>

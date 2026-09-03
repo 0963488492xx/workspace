@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>formData</title>
+    <script>
+        window.onload = function () {
+            var form = document.getElementById('form1');
+            var send = document.getElementById('send');
+
+            send.addEventListener('click', function (e) {
+                e.preventDefault();
+                var formData = new FormData(form);
+
+                var userName = formData.get("userName");
+                console.log('userName:' + userName);
+
+                var infoArray = formData.getAll("result1");
+                console.log(infoArray);
+
+                var xh = new XMLHttpRequest();
+                xh.open('post', '/jsonarrycreation2.controller', true);
+                xh.send(formData);
+
+                xh.onload = function () {
+                    console.log('xh.status:' + xh.status);
+                    console.log('xh.responseText:' + xh.responseText);
+                }
+            });
+        };
+    </script>
+</head>
+
+<body>
+    <h2>Information</h2>
+    <form id="form1">
+        <p>
+
+            Name: <input type="text" name="userName" placeholder=" please input your name" /><br />
+            Information: <br />
+            Info1: <input type="text" name="result1"><br />
+            Info2: <input type="text" name="result1"><br />
+        </p>
+        <button type="submit" id="send">Send</button>
+
+
+
+    </form>
+</body>
+
+</html>

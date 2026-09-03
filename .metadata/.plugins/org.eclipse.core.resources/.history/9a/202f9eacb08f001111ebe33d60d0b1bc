@@ -1,0 +1,84 @@
+package com.example.demo.controller;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+import org.hibernate.Length;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.example.demo.model.Animal;
+import com.example.demo.model.AnimalService;
+
+@Controller
+
+public class ReadAnimalController {
+
+	
+	private ArrayList<Animal> animals = new ArrayList<Animal>() ;
+	
+	
+	public ReadAnimalController() {
+		animals.add(new Animal(1,"monkey"));
+		animals.add(new Animal(2,"lion"));
+		animals.add(new Animal(3,"tiger"));
+		animals.add(new Animal(4,"hippo"));
+		animals.add(new Animal(5,"bird"));
+		animals.add(new Animal(6,"pig"));
+		animals.add(new Animal(7,"cat"));
+		animals.add(new Animal(8,"dog"));
+		animals.add(new Animal(9,"zrbra"));
+		animals.add(new Animal(10,"giraff"));
+	}
+	
+	@PostMapping("/animalreader.controller")
+	@ResponseBody
+	public List<Animal> processAction(@RequestParam("keyword") String animalName){
+		return searchResult(animalName);
+	}
+	private List<Animal> searchResult(String animalName) {
+		List<Animal> result = new ArrayList<Animal>();
+		
+		for (Animal a : animals) {
+			if (a.getAname().contains(animalName) && animalName.length()!=0) {
+				result.add(a);
+			}
+		}
+		
+		return result;
+	}
+	
+	
+	@Autowired
+	private AnimalService aService;
+	
+	@PostMapping("/animalreader2.controller")
+	@ResponseBody
+	public List<Animal>processAction2(@RequestParam ("keyword") String animalName){
+		return searchResult2(animalName);
+	}
+
+
+	private List<Animal> searchResult2(String animalName) {
+		List<Animal> result = new ArrayList<Animal>();
+		List<Animal> myAnimals = aService.selectAll();
+		
+		for (Animal a1:myAnimals) {
+			if (a1.getAname().contains(animalName) && animalName.length()!=0) {
+				result.add(a1);
+			}
+			
+		}
+		return null;
+	}
+
+	
+	
+	
+		
+
+}

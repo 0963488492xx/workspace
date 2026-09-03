@@ -1,0 +1,118 @@
+package com.example.demo.config;
+
+
+import java.util.HashMap;
+
+import org.springframework.beans.factory.config.PropertiesFactoryBean;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.context.annotation.Scope;
+import org.springframework.core.io.ClassPathResource;
+
+import com.example.demo.model.Animal;
+import com.example.demo.model.Building;
+import com.example.demo.model.BuildingDao;
+import com.example.demo.model.BuildingService;
+import com.example.demo.model.TruckBean;
+import com.example.demo.model.TruckBeanFactory;
+import com.example.demo.model.TruckBeanStaticFactory;
+import com.example.demo.model.Worker;
+
+@Configuration
+public class RootAppConfig {
+	
+	@Bean(initMethod = "init", destroyMethod = "destroy") @Scope(value = "singleton") //@Scope(value = "prototype") 
+	@Lazy(value = true)
+	public Animal animal() {
+		Animal a1 = new Animal(1,"cow");
+		return a1;
+}
+	
+	
+	
+	
+	@Bean
+	public PropertiesFactoryBean props() {
+		PropertiesFactoryBean p1 = new PropertiesFactoryBean();
+		p1.setLocation(new ClassPathResource("tree.properties"));
+		return p1;
+	}
+	
+	
+	
+	@Bean
+	public Worker worker1() {
+		Worker worker = new Worker(101,"mary","engineer");
+		return worker;
+	}
+	@Bean
+	public Worker worker2() {
+		Worker worker = new Worker(102,"john","sales");
+		return worker;
+	}
+	
+	@Bean
+	public TruckBean fordTruck() {
+		TruckBeanFactory factory = truckBeanFactory();
+		return factory.geTruckBean(5);
+	}
+	
+	@Bean
+	public TruckBean subaruTruck() {
+		TruckBeanFactory factory = truckBeanFactory();
+		return factory.geTruckBean(6);
+	} 
+		
+	
+
+	public TruckBeanFactory truckBeanFactory() {
+		HashMap<Integer, TruckBean> maps = new HashMap<Integer, TruckBean>();
+		maps.put(5,new TruckBean(7,"ford"));
+		maps.put(6,new TruckBean(8,"subaru"));
+		
+		TruckBeanFactory tBean = new TruckBeanFactory();
+		tBean.setMap(maps);
+		
+		return tBean;
+	}
+	
+	@Bean(name = "toyo1")
+	public TruckBean toyotaTruck() {
+		return TruckBeanStaticFactory.geTruckBean(1);
+	}
+	@Bean(name = "niss1")
+	public TruckBean nissanTruck() {
+		return TruckBeanStaticFactory.geTruckBean(2);
+	}
+	
+	
+	@Bean
+	public TruckBean truckBean() {
+		TruckBean tBean = new TruckBean(1,"honda");
+		return tBean;
+	}
+	
+	
+	@Bean //Building building =new Building 
+	public Building building1() {
+		return new Building();
+	}
+	@Bean //Building building2 = new Building(1001,"dubai tower",15);
+	public Building building2() {
+		Building b2 =new Building(1001,"dubai tower",15);
+		return b2;
+	}
+	
+	@Bean
+	public BuildingDao buildingDao1() {
+		BuildingDao bDao = new BuildingDao(building1());
+		return bDao;
+	}
+	@Bean
+	public BuildingService buildingService() {
+		BuildingService bs1 = new BuildingService(buildingDao1());
+		return bs1;
+	}
+	
+}

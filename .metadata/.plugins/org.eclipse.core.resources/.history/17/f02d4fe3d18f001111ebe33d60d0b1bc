@@ -1,0 +1,64 @@
+package com.example.demo.product.controller;
+import java.util.HashMap;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.example.demo.product.model.Product;
+import com.example.demo.product.model.ProductService;
+
+
+
+@Controller
+@RequestMapping(path = "/product")
+public class ProductController2 {
+	
+	@Autowired
+	private ProductService pService;
+	
+	@GetMapping("/productqueryallmain.controller")
+	public String processMainAction() {
+		return "/product/productQueryAll";
+	}
+	
+	@GetMapping("/querybyid/{pid}")
+	@ResponseBody
+	public Product processQueryByIdAction(@PathVariable Integer pid) {
+		return pService.selectById(pid);
+	}
+	
+	@GetMapping("/queryall")
+	@ResponseBody
+	public List<Product> processQueryAllAction(){
+		return pService.selectAll();
+	}
+	
+	@GetMapping("/querybypage/{pageNo}")
+	@ResponseBody
+	public HashMap<String, Object> processQueryAllByPageAction(@PathVariable Integer pageNo){
+		int pageSize=3;
+		Pageable pageable = PageRequest.of(pageNo-1, pageSize);
+		Page<Product> page = pService.selectAllByPage(pageable);
+		
+		HashMap<String, Object> maps = new HashMap<String, Object>();
+		maps.put("totalPages", page.getTotalPages());
+		maps.put("totalElements", page.getTotalElements());
+		maps.put("content", page.getContent());
+		
+		return maps;
+	}
+	
+	@GetMapping("/hello")
+	@ResponseBody
+	public String processAtion3() {
+		return "hello";
+	}
+}

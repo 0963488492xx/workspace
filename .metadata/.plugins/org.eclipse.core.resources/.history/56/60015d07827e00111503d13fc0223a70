@@ -1,0 +1,20 @@
+package com.example.demo.config;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import com.example.demo.model.Building;
+
+@Configuration
+public class RootAppConfig {
+
+	@Bean //Building building =new Building 
+	public Building building() {
+		return new Building();
+	}
+	@Bean //Building building2 = new Building(1001,"dubai tower",15);
+	public Building building2() {
+		Building b2 =new Building(1001,"dubai tower",15);
+		return b2;
+	}
+}

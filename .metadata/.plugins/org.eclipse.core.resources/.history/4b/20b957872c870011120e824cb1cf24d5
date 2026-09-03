@@ -1,0 +1,36 @@
+package com.example.demo.controller;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import jakarta.servlet.http.HttpSession;
+
+@RestController
+public class HttpSessionController {
+	
+	
+	@GetMapping("/httpsession1.controller")
+	public String processAction(HttpSession session) {
+		
+		if (session.isNew()) {
+			String sessionId = session.getId();
+			return "sessionId:" + sessionId;
+		}
+		session.invalidate();
+		return "Session Destroyed";
+		
+	}
+	
+	@GetMapping("/httpsession2.controller")
+	public String processACtion2(HttpSession session) {
+		if (session.isNew()) {
+			session.setAttribute("user", "john");
+			session.setMaxInactiveInterval(6);
+			String sessionId2= session.getId();
+			return "sessionId2:" +sessionId2;
+		}
+			String userName = (String) session.getAttribute("user");
+			return "userName:" + userName;
+		
+	}
+}

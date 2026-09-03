@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>jquery02</title>
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $.post('jqueryaction2.controller', function (data) {
+                $('#result1').html(data);
+            });
+        });
+
+        $(function () {
+            $.post('jqueryaction2.controller', function (data) {
+                $('#result2').html(data);
+            });
+        })
+
+
+    </script>
+</head>
+
+<body>
+    jquery02
+    <div id="result1"></div>
+    <div id="result2"></div>
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+package com.example.demo.model;
+
+
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class WorkerServiceTest {
+
+	@Autowired
+	private WorkerDao wDao;
+	
+	@Autowired
+	private WorkerService workerService;
+	
+	@Test
+	void testPrintDetails() {
+		System.out.println("---------------");
+		wDao.printDetails();
+	}
+
+}
